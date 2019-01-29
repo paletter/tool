@@ -10,7 +10,39 @@ public class RandomUtils {
 		return RANDOM.nextInt(i);
 	}
 	
-	public static int random(int min, int max) {
-		return RANDOM.nextInt(max - min) + min;
+	public static boolean hit(int cardinal, int target) {
+		int rlt = RANDOM.nextInt(cardinal);
+		return rlt < target;
+	}
+	
+	public static boolean hit(int cardinal, float target) {
+		int rlt = RANDOM.nextInt(cardinal);
+		return rlt < target;
+	}
+	
+	public static boolean hit(int cardinal, double target) {
+		int rlt = RANDOM.nextInt(cardinal);
+		return rlt < target;
+	}
+	
+	public static boolean hit(float cardinal, float target) {
+		int rlt = RANDOM.nextInt((int) cardinal);
+		return rlt < target;
+	}
+	
+	public static boolean hit(double cardinal, float target) {
+		int rlt = RANDOM.nextInt((int) cardinal);
+		return rlt < target;
+	}
+	
+	/**
+	 * return end >= value >= start.
+	 * <pre>
+	 * randomInt(1, 2) = 1 or 2
+	 * </pre>
+	 */
+	public static Integer randomInt(int start, int end) {
+		int bound = end - start + 1;
+		return start + RANDOM.nextInt(bound);
 	}
 }
