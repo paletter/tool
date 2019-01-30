@@ -14,6 +14,11 @@ public class IOWriterTool {
 		os.flush();
 	}
 	
+	public static void writeContent(OutputStream os, String str, String charset) throws IOException {
+		os.write(str.getBytes(charset));
+		os.flush();
+	}
+	
 	@SuppressWarnings("restriction")
 	public static void writeContentWithLine(OutputStream os, String str) throws IOException {
 		os.write(str.getBytes());
