@@ -10,6 +10,10 @@ public class RandomUtils {
 		return RANDOM.nextInt(i);
 	}
 	
+	public static boolean hit(double rate) {
+		return hit(10000, rate * 10000);
+	}
+	
 	public static boolean hit(int cardinal, int target) {
 		int rlt = RANDOM.nextInt(cardinal);
 		return rlt < target;
