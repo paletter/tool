@@ -7,7 +7,11 @@ import java.util.GregorianCalendar;
 
 public class DateUtils {
 
+	/** yyyy-MM-dd */
 	public static final String FORMAT_YMD = "yyyy-MM-dd";
+	/** yyyy-MM-dd HH:mm:ss */
+	public static final String FORMAT_YMD_HMS = "yyyy-MM-dd HH:mm:ss";
+	/** HH:mm */
 	public static final String FORMAT_HM = "HH:mm";
 	
 	/**

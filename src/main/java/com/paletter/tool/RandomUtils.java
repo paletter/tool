@@ -11,7 +11,7 @@ public class RandomUtils {
 	}
 	
 	public static boolean hit(double rate) {
-		return hit(10000, rate * 10000);
+		return hit(1000000, rate * 1000000);
 	}
 	
 	public static boolean hit(int cardinal, int target) {
