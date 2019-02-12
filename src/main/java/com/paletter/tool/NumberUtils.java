@@ -32,6 +32,13 @@ public class NumberUtils {
 		return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
 	
+	public static Float divideFloat(Float arg1, Float arg2, int scale) {
+		if (arg2 == 0) return 0f;
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).floatValue();
+	}
+	
 	public static Integer divideInteger(Integer arg1, Integer arg2, int roundingMode) {
 		if (arg2 == 0) return 0;
 		BigDecimal b1 = BigDecimal.valueOf(arg1);
@@ -73,8 +80,31 @@ public class NumberUtils {
 		if (b2 == null) return BigDecimal.ZERO;
 		return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP);
 	}
+
+	public static Float multiFloat(Float arg1, Float arg2, int scale) {
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.multiply(b2).setScale(scale, BigDecimal.ROUND_HALF_UP).floatValue();
+	}
 	
 	public static Integer nullForZero(Integer i) {
 		return i == null ? 0 : i;
+	}
+	
+	public static Integer getIntAvg(Integer max, Integer min) {
+		if (max == null || min == null) return 0;
+		return min + (max - min) / 2;
+	}
+	
+	public static Float addFloat(Float...floats) {
+		BigDecimal r = BigDecimal.ZERO;
+		for (Float f : floats) r = r.add(new BigDecimal(f + ""));
+		return r.floatValue();
+	}
+	
+	public static Float subFloat(Float f1, Float...floats) {
+		BigDecimal r = new BigDecimal(f1 + "");
+		for (Float f : floats) r = r.subtract(new BigDecimal(f + ""));
+		return r.floatValue();
 	}
 }
