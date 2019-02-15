@@ -93,6 +93,12 @@ public class NumberUtils {
 		return b1.multiply(b2).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
 	}
 	
+	public static Integer multiInteger(Float arg1, Integer arg2) {
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.multiply(b2).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
+	}
+	
 	public static Integer nullForZero(Integer i) {
 		return i == null ? 0 : i;
 	}
@@ -108,9 +114,25 @@ public class NumberUtils {
 		return r.floatValue();
 	}
 	
+	public static Float addFloat(int scale, Float...floats) {
+		BigDecimal r = BigDecimal.ZERO;
+		for (Float f : floats) r = r.add(new BigDecimal(f + ""));
+		return r.setScale(scale, BigDecimal.ROUND_HALF_UP).floatValue();
+	}
+	
 	public static Float subFloat(Float f1, Float...floats) {
 		BigDecimal r = new BigDecimal(f1 + "");
 		for (Float f : floats) r = r.subtract(new BigDecimal(f + ""));
 		return r.floatValue();
+	}
+	
+	public static Float subFloat(int scale, Float f1, Float...floats) {
+		BigDecimal r = new BigDecimal(f1 + "");
+		for (Float f : floats) r = r.subtract(new BigDecimal(f + ""));
+		return r.setScale(scale, BigDecimal.ROUND_HALF_UP).floatValue();
+	}
+	
+	public static Float setScale(Float f, int scale) {
+		return new BigDecimal(f + "").setScale(scale, BigDecimal.ROUND_UP).floatValue();
 	}
 }
