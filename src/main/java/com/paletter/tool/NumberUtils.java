@@ -87,10 +87,14 @@ public class NumberUtils {
 		return b1.multiply(b2).setScale(scale, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
 	
-	public static Integer multiInteger(Float arg1, Float arg2) {
-		BigDecimal b1 = BigDecimal.valueOf(arg1);
-		BigDecimal b2 = BigDecimal.valueOf(arg2);
-		return b1.multiply(b2).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
+	public static Integer multiInteger(Float... arg1) {
+		BigDecimal r = null;
+		for (Float f : arg1) {
+			BigDecimal b = BigDecimal.valueOf(f);
+			if (r == null) r = b;
+			else r = b.multiply(r);
+		}
+		return r.setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
 	}
 	
 	public static Integer multiInteger(Float arg1, Integer arg2) {
