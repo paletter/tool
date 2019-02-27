@@ -53,11 +53,22 @@ public class NumberUtils {
 		return b1.divide(b2, 0, roundingMode).intValue();
 	}
 	
+	public static Integer divideInteger(Integer arg1, Float arg2, int roundingMode) {
+		if (arg2 == 0) return 0;
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.divide(b2, 0, roundingMode).intValue();
+	}
+	
 	public static Integer divideInteger(Double arg1, Integer arg2) {
 		return divideInteger(arg1, arg2, BigDecimal.ROUND_HALF_UP);
 	}
 	
 	public static Integer divideInteger(Integer arg1, Integer arg2) {
+		return divideInteger(arg1, arg2, BigDecimal.ROUND_HALF_UP);
+	}
+	
+	public static Integer divideInteger(Integer arg1, Float arg2) {
 		return divideInteger(arg1, arg2, BigDecimal.ROUND_HALF_UP);
 	}
 	
@@ -98,6 +109,18 @@ public class NumberUtils {
 	}
 	
 	public static Integer multiInteger(Float arg1, Integer arg2) {
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.multiply(b2).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
+	}
+	
+	public static Integer multiInteger(Integer arg2, Double arg1) {
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.multiply(b2).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
+	}
+	
+	public static Integer multiInteger(Integer arg2, Integer arg1) {
 		BigDecimal b1 = BigDecimal.valueOf(arg1);
 		BigDecimal b2 = BigDecimal.valueOf(arg2);
 		return b1.multiply(b2).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
