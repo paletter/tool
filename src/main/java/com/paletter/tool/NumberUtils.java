@@ -11,10 +11,12 @@ public class NumberUtils {
 	}
 
 	public static Float divideFloat(Integer arg1, Integer arg2) {
+		if (arg2 == 0) return 0f;
 		return Float.valueOf(arg1) / Float.valueOf(arg2);
 	}
 	
 	public static Float divideFloat(Float arg1, Integer arg2) {
+		if (arg2 == 0) return 0f;
 		return Float.valueOf(arg1) / Float.valueOf(arg2);
 	}
 	
