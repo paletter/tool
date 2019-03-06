@@ -6,6 +6,9 @@ public class RandomUtils {
 
 	private static Random RANDOM = new Random();
 	
+	/**
+	 * RandomUtils.nextInt(1) = 0 or 1
+	 */
 	public static int nextInt(int i) {
 		return RANDOM.nextInt(i);
 	}
