@@ -164,4 +164,10 @@ public class NumberUtils {
 	public static Float setScale(Float f, int scale) {
 		return new BigDecimal(f + "").setScale(scale, BigDecimal.ROUND_UP).floatValue();
 	}
+
+	public static BigDecimal addBigDcimal(BigDecimal...bigdecimals) {
+		BigDecimal r = BigDecimal.ZERO;
+		for (BigDecimal b : bigdecimals) r = r.add(b == null ? BigDecimal.ZERO : b);
+		return r;
+	}
 }
