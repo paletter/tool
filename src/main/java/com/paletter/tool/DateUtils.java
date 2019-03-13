@@ -2,8 +2,10 @@ package com.paletter.tool;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class DateUtils {
 
@@ -70,5 +72,24 @@ public class DateUtils {
     	gc.setTime(date);
     	gc.add(GregorianCalendar.DATE, dayNum);
     	return format(gc.getTime(), format);
+    }
+
+    /**
+     * <p>
+     * splitDate("2017-12-30", "2018-01-02") = ["2017-12-30", "2017-12-31", "2018-01-01", "2018-01-02"]
+     * </p>
+     * @param startMonth
+     * @param endMonth
+     * @return
+     */
+    public static List<String> splitDate(String startDate, String endDate) {
+    	List<String> dateList = new ArrayList<>();
+    	Date start = DateUtils.parse(startDate, "yyyy-MM-dd");
+		Date end = DateUtils.parse(endDate, "yyyy-MM-dd");
+		while (start.compareTo(end) <= 0) {
+			dateList.add(DateUtils.format(start, "yyyy-MM-dd"));
+			start = DateUtils.addDay(start, 1);
+		}
+		return dateList;
     }
 }
