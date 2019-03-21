@@ -16,4 +16,16 @@ public class StringUtils {
 		if (object == null) return null;
 		return JSONObject.toJSONString(object);
 	}
+	
+	public static String toLowerCaseFirstChar(String str) {
+		if (isEmpty(str)) return str;
+		return Character.isLowerCase(str.charAt(0)) ? str : 
+			(new StringBuilder()).append(Character.toLowerCase(str.charAt(0))).append(str.substring(1)).toString();
+	}
+	
+	public static String toUpperCaseFirstChar(String str) {
+		if (isEmpty(str)) return str;
+		return Character.isUpperCase(str.charAt(0)) ? str : 
+			(new StringBuilder()).append(Character.toUpperCase(str.charAt(0))).append(str.substring(1)).toString();
+	}
 }
