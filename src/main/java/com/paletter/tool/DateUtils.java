@@ -47,6 +47,36 @@ public class DateUtils {
 			return null;
 		}
 	}
+	
+	/**
+	 * Parse Date to String "YYYY-MM-DD"
+	 * @param date
+	 * @return
+	 */
+	public static String formatYMD(Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat(FORMAT_YMD);
+		try {
+			return sdf.format(date);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 * Parse Date to String "YYYY-MM-DD HH:mm:ss"
+	 * @param date
+	 * @return
+	 */
+	public static String formatYMDAndHMS(Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat(FORMAT_YMD_HMS);
+		try {
+			return sdf.format(date);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
     /**
      * Add days
