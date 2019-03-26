@@ -42,6 +42,11 @@ public class RandomUtils {
 		return rlt < target;
 	}
 	
+	public static boolean hit(double cardinal, double target) {
+		int rlt = RANDOM.nextInt((int) cardinal);
+		return rlt < target;
+	}
+	
 	/**
 	 * return end >= value >= start.
 	 * <pre>
