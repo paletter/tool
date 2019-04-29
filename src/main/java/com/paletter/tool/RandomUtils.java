@@ -51,6 +51,7 @@ public class RandomUtils {
 	 * return end >= value >= start.
 	 * <pre>
 	 * randomInt(1, 2) = 1 or 2
+	 * randomInt(-1, 1) = -1 or 0 or 1
 	 * </pre>
 	 */
 	public static Integer randomInt(int start, int end) {
