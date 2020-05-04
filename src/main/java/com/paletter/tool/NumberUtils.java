@@ -1,6 +1,7 @@
 package com.paletter.tool;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class NumberUtils {
 
@@ -8,30 +9,6 @@ public class NumberUtils {
 		if (i1 == null) i1 = 0;
 		if (i2 == null) i2 = 0;
 		return i1 + i2;
-	}
-
-	public static Float divideFloat(Integer arg1, Integer arg2) {
-		if (arg2 == 0) return 0f;
-		return Float.valueOf(arg1) / Float.valueOf(arg2);
-	}
-	
-	public static Float divideFloat(Float arg1, Integer arg2) {
-		if (arg2 == 0) return 0f;
-		return Float.valueOf(arg1) / Float.valueOf(arg2);
-	}
-	
-	public static Float divideFloat(Integer arg1, Integer arg2, int scale) {
-		if (arg2 == 0) return 0f;
-		BigDecimal b1 = BigDecimal.valueOf(arg1);
-		BigDecimal b2 = BigDecimal.valueOf(arg2);
-		return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).floatValue();
-	}
-	
-	public static Float divideFloat(Float arg1, Integer arg2, int scale) {
-		if (arg2 == 0) return 0f;
-		BigDecimal b1 = BigDecimal.valueOf(arg1);
-		BigDecimal b2 = BigDecimal.valueOf(arg2);
-		return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
 	
 	public static Float divideFloat(Float arg1, Float arg2, int scale) {
@@ -41,33 +18,11 @@ public class NumberUtils {
 		return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
 	
-	public static Integer divideInteger(Integer arg1, Integer arg2, int roundingMode) {
-		if (arg2 == 0) return 0;
-		BigDecimal b1 = BigDecimal.valueOf(arg1);
-		BigDecimal b2 = BigDecimal.valueOf(arg2);
-		return b1.divide(b2, 0, roundingMode).intValue();
-	}
-	
-	public static Integer divideInteger(Double arg1, Integer arg2, int roundingMode) {
-		if (arg2 == 0) return 0;
-		BigDecimal b1 = BigDecimal.valueOf(arg1);
-		BigDecimal b2 = BigDecimal.valueOf(arg2);
-		return b1.divide(b2, 0, roundingMode).intValue();
-	}
-	
 	public static Integer divideInteger(Integer arg1, Float arg2, int roundingMode) {
 		if (arg2 == 0) return 0;
 		BigDecimal b1 = BigDecimal.valueOf(arg1);
 		BigDecimal b2 = BigDecimal.valueOf(arg2);
 		return b1.divide(b2, 0, roundingMode).intValue();
-	}
-	
-	public static Integer divideInteger(Double arg1, Integer arg2) {
-		return divideInteger(arg1, arg2, BigDecimal.ROUND_HALF_UP);
-	}
-	
-	public static Integer divideInteger(Integer arg1, Integer arg2) {
-		return divideInteger(arg1, arg2, BigDecimal.ROUND_HALF_UP);
 	}
 	
 	public static Integer divideInteger(Integer arg1, Float arg2) {
@@ -128,10 +83,6 @@ public class NumberUtils {
 		return b1.multiply(b2).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
 	}
 	
-	public static Integer nullForZero(Integer i) {
-		return i == null ? 0 : i;
-	}
-	
 	public static Integer getIntAvg(Integer max, Integer min) {
 		if (max == null || min == null) return 0;
 		return min + (max - min) / 2;
@@ -164,10 +115,64 @@ public class NumberUtils {
 	public static Float setScale(Float f, int scale) {
 		return new BigDecimal(f + "").setScale(scale, BigDecimal.ROUND_UP).floatValue();
 	}
+	
+
+	public static Float divideFloat(Integer arg1, Integer arg2) {
+		return Float.valueOf(arg1) / Float.valueOf(arg2);
+	}
+	
+	public static Float divideFloat(Float arg1, Integer arg2) {
+		return Float.valueOf(arg1) / Float.valueOf(arg2);
+	}
+	
+	public static Float divideFloat(Integer arg1, Integer arg2, int scale) {
+		if (arg2 == 0) return 0f;
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).floatValue();
+	}
+	
+	public static Float divideFloat(Float arg1, Integer arg2, int scale) {
+		if (arg2 == 0) return 0f;
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).floatValue();
+	}
+	
+	public static Integer divideInteger(Integer arg1, Integer arg2, int roundingMode) {
+		if (arg2 == 0) return 0;
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.divide(b2, 0, roundingMode).intValue();
+	}
+	
+	public static Integer divideInteger(Double arg1, Integer arg2, int roundingMode) {
+		if (arg2 == 0) return 0;
+		BigDecimal b1 = BigDecimal.valueOf(arg1);
+		BigDecimal b2 = BigDecimal.valueOf(arg2);
+		return b1.divide(b2, 0, roundingMode).intValue();
+	}
+	
+	public static Integer divideInteger(Double arg1, Integer arg2) {
+		return divideInteger(arg1, arg2, BigDecimal.ROUND_HALF_UP);
+	}
+	
+	public static Integer divideInteger(Integer arg1, Integer arg2) {
+		return divideInteger(arg1, arg2, BigDecimal.ROUND_HALF_UP);
+	}
+	
+	public static Integer nullForZero(Integer i) {
+		return i == null ? 0 : i;
+	}
 
 	public static BigDecimal addBigDcimal(BigDecimal...bigdecimals) {
 		BigDecimal r = BigDecimal.ZERO;
 		for (BigDecimal b : bigdecimals) r = r.add(b == null ? BigDecimal.ZERO : b);
 		return r;
+	}
+	
+	public static String formatMoney(Integer money) {
+		DecimalFormat df = new DecimalFormat("#,###");
+		return df.format(money);
 	}
 }
