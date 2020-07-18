@@ -1,9 +1,6 @@
 package com.paletter.tool;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class IOWriterTool {
 
@@ -22,8 +19,7 @@ public class IOWriterTool {
 	@SuppressWarnings("restriction")
 	public static void writeContentWithLine(OutputStream os, String str) throws IOException {
 		os.write(str.getBytes());
-		os.write(java.security.AccessController.doPrivileged(
-				new sun.security.action.GetPropertyAction("line.separator")).getBytes());
+		os.write(System.lineSeparator().getBytes());
 		os.flush();
 	}
 	
